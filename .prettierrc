@@ -1,0 +1,11 @@
+{
+    "semi": true,
+    "tabWidth": 2,
+    "singleQuote": true,
+    "trailingComma": "es5",
+    "tailwindConfig": "./tailwind.config.js",
+    "plugins": [
+        "prettier-plugin-organize-imports",
+        "prettier-plugin-tailwindcss"
+    ]
+}
