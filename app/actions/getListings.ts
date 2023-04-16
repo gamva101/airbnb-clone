@@ -1,5 +1,4 @@
 import prisma from "@/app/libs/prismadb";
-import { list } from "postcss";
 
 export default async function getListings() {
     try {
@@ -8,7 +7,12 @@ export default async function getListings() {
                 createdAt: 'desc'
             }
         })
-        return listings;
+        const safeListings = listings.map((listing) => ({
+            ...listing,
+            createdAt: listing.createdAt.toISOString(),
+        }));
+
+        return safeListings;
     } catch (error: any) {
         throw new Error(error);
     }
