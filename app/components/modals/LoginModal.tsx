@@ -60,6 +60,7 @@ const LoginModal = () => {
     registerModal.onOpen();
   }, [loginModal, registerModal]);
 
+  console.log(errors);
   const bodyContent = (
     <div className="flex flex-col gap-4">
       <Heading title="Welcome back" subtitle="Login to your account!" />
@@ -68,7 +69,7 @@ const LoginModal = () => {
         label="Email"
         disabled={isLoading}
         register={register}
-        errors={errors}
+        errors={false}
         required
       />
       <Input
@@ -77,7 +78,7 @@ const LoginModal = () => {
         label="Password"
         disabled={isLoading}
         register={register}
-        errors={errors}
+        errors={false}
         required
       />
     </div>

@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { FieldError, FieldValues, UseFormRegister } from 'react-hook-form';
+import { FieldValues, UseFormRegister } from 'react-hook-form';
 import { BiDollar } from 'react-icons/bi';
 
 interface InputProps {
@@ -12,7 +12,7 @@ interface InputProps {
   formatPrice?: boolean;
   required?: boolean;
   register: UseFormRegister<FieldValues>;
-  errors: FieldError;
+  errors: boolean;
 }
 const Input: React.FC<InputProps> = ({
   id,
@@ -22,8 +22,9 @@ const Input: React.FC<InputProps> = ({
   formatPrice,
   register,
   required,
-  errors,
+  errors = false,
 }) => {
+  console.log(errors);
   return (
     <div className="relative w-full">
       {formatPrice && (
@@ -51,15 +52,15 @@ const Input: React.FC<InputProps> = ({
           disabled:cursor-not-allowed
           disabled:opacity-70
           ${formatPrice ? 'pl-9' : 'pl-4'}
-          ${errors[id] ? 'border-rose-500' : 'border-neutral-300'}
-          ${errors[id] ? 'focus:border-rose-500' : 'focus:border-black'}
+          ${errors ? 'border-rose-500' : 'border-neutral-300'}
+          ${errors ? 'focus:border-rose-500' : 'focus:border-black'}
         `}
       />
       <label
         className={`text-md absolute top-5 z-10 origin-[0] -translate-y-3 transform duration-150 ${
           formatPrice ? 'left-9' : 'left-4'
         } peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:-translate-y-4 peer-focus:scale-75
-          ${errors[id] ? 'text-rose-500' : 'text-zinc-400'}
+          ${errors ? 'text-rose-500' : 'text-zinc-400'}
           `}
       >
         {label}

@@ -19,6 +19,6 @@ export type SafeReservation = Omit<
   listing: SafeListing;
 };
 
-export type SafeListing = Omit<Listing, 'createAt'> & {
-  createAt: string;
+export type SafeListing = Omit<Listing, 'createdAt'> & {
+  createdAt: string;
 };
